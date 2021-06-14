@@ -30,11 +30,16 @@ class _BirdState extends State<Bird> {
     }
   }
 
-  void animated() {
+  grav() {
+    posy += 0.1;
+  }
+
+  void update() {
     Timer.periodic(Duration(milliseconds: 10), (timer) {
       setState(() {
         timer;
         imgUpdate;
+        grav;
       });
     });
   }
@@ -44,7 +49,11 @@ class _BirdState extends State<Bird> {
     return AnimatedContainer(
       duration: Duration(milliseconds: 0),
       alignment: Alignment(posx, posy),
-      child: Image.asset("assets/bird" + img.toString() + ".png"),
+      child: Image.asset(
+        "assets/bird" + img.toString() + ".png",
+        width: 160,
+        height: 160,
+      ),
     );
   }
 }
